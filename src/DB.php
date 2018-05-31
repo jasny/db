@@ -6,6 +6,7 @@ use Jasny\DB\Connection;
 use Jasny\DB\ConnectionFactory;
 use Jasny\DB\ConnectionRegistry;
 use Jasny\DB\EntitySetFactory;
+use Jasny\DB\Entity\Dynamic;
 
 /**
  * DB factories and registries.
@@ -243,4 +244,40 @@ class DB
         self::$connectionRegistry = null;
         self::$entitySetFactory = null;
     }
+
+
+    /**
+     * Set public properties of an object.
+     * Utility function
+     *
+     * @param object $object
+     * @param array  $values
+     * @return object $object
+     */
+    public static function setPublicProperties($object, array $values)
+    {
+        foreach ($values as $key => $value) {
+            if (!property_exists($object, $key) && ($key[0] === '_' || !$object instanceof Dynamic)) {
+                continue;
+            }
+
+            $object->$key = $value;
+        }
+        
+        return $object;
+    }
+
+    /**
+     * Set public properties of an object.
+     * Utility function
+     *
+     * @param object $object
+     * @param array  $values
+     * @return object $object
+     */
+    public static function getPublicProperties($object)
+    {
+        return get_object_vars($object);
+    }
 }
+
