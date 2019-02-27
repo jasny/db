@@ -18,10 +18,11 @@
     },
     "require": {
         "php": ">=5.6.0",
+        "ext-mongodb": "*",
         "jasny/validation-result": "~1.0.0",
         "jasny/meta": "^3.0.0",
         "jasny/typecast": "^2.1.0",
-        "sebastian/comparator": "~1.2"
+        "sebastian/comparator": "~1.2 || ~2.0 || ~3.0"
     },
     "require-dev": {
         "jasny/php-code-quality": "^1.1"
