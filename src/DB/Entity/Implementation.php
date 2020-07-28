@@ -24,7 +24,7 @@ trait Implementation
      * @param array|object $values
      * @return $this
      */
-    public function setValues($values)
+    protected function populateValues($values)
     {
         $refl = new ReflectionClass($this);
 
@@ -43,6 +43,17 @@ trait Implementation
         return $this;
     }
 
+    /**
+     * Set the values.
+     * 
+     * @param array|object $values
+     * @return $this
+     */
+    public function setValues($values)
+    {
+        return $this->populateValues($values);
+    }
+    
     /**
      * Get the values.
      * 
@@ -76,7 +87,7 @@ trait Implementation
         $reflection = new \ReflectionClass($class);
         $entity = $reflection->newInstanceWithoutConstructor();
         
-        $entity->setValues($values);
+        $entity->populateValues($values);
         if (method_exists($entity, '__construct')) {
             $entity->__construct();
         }
