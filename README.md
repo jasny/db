@@ -1,9 +1,6 @@
 Jasny DB
 ========
 
-[![Build Status](https://secure.travis-ci.org/jasny/db.png?branch=master)](http://travis-ci.org/jasny/db)
-[![Coverage Status](https://coveralls.io/repos/jasny/db/badge.svg?branch=master&service=github)](https://coveralls.io/github/jasny/db?branch=master)
-
 Jasny DB adds OOP design patterns to PHP's database extensions.
 
 * [Service Locator](#service-locator)
